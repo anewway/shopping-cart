@@ -13,7 +13,11 @@ export class ProductsService {
   ){}
 
   create(createProductDto: CreateProductDto) {
-    return 'This action adds a new product';
+    const product = new Product();
+    product.name = createProductDto.name;
+    product.price = createProductDto.price;
+    product.quantity = createProductDto.quantity;
+    return this.productRepository.save(product);
   }
 
   findAll(): Promise<Product[]> {
